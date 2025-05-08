@@ -1,6 +1,6 @@
 package org.example;
 
-public class Empleado {
+public class Empleado implements Invitable {
 
     private String id, nombre, apellidos, correo;
 
@@ -9,6 +9,10 @@ public class Empleado {
         this.apellidos = apellidos;
         this.nombre = nombre;
         this.id = id;
+    }
+
+    @Override
+    public void invitar() {
     }
 }
 
