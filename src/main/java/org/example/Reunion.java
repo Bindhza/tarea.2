@@ -2,6 +2,7 @@ package org.example;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -25,6 +26,18 @@ public abstract class Reunion {
         this.duracionPrevista = duracionPrevista;
         this.invitacion = new Invitacion(horaPrevista);
         this.invitados = new ArrayList<>();
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public Instant getHoraPrevista() {
+        return horaPrevista;
+    }
+
+    public Duration getDuracionPrevista() {
+        return duracionPrevista;
     }
 
     public ArrayList<Asistencia> obtenerAsistencias(){
@@ -70,4 +83,6 @@ public abstract class Reunion {
     public void finalizar(){
         horaFin = Instant.now();
     }
+
+
 }
