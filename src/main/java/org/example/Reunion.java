@@ -3,7 +3,6 @@ package org.example;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 
 public abstract class Reunion {
@@ -15,28 +14,29 @@ public abstract class Reunion {
 
     private ArrayList<Asistencia> asistencias;
 
-    private ArrayList<? extends Invitable> invitados;
-
-    private Invitacion invitacion;
+    private ArrayList<Invitacion> invitaciones;
 
     public Reunion(Date fecha, Instant horaPrevista, Duration duracionPrevista) {
         this.fecha = fecha;
         this.horaPrevista = horaPrevista;
         this.duracionPrevista = duracionPrevista;
-        this.invitacion = new Invitacion(horaPrevista);
-        this.invitados = new ArrayList<>();
+        this.invitaciones = new ArrayList<>();
     }
 
     public ArrayList<Asistencia> obtenerAsistencias(){
         return asistencias;
     }
 
-    public ArrayList<? extends Invitable> obtenerAusencias(){
-        ArrayList<? extends Invitable> ausencias = new ArrayList<>(invitados);
+    public ArrayList<Invitable> obtenerAusencias(){
+        ArrayList<Invitable> ausencias = new ArrayList<>();
 
-        for(Asistencia a: asistencias){
-            ausencias.remove(a.getEmpleado());
+        for(Invitacion i: invitaciones){
+            ausencias.add(i.getInvitado());
         }
+        for(Asistencia a: asistencias){
+            ausencias.remove(a.getAsistente());
+        }
+        //por favor si es posible cambiar esto, no me gusta
         return ausencias;
     }
 
@@ -56,7 +56,7 @@ public abstract class Reunion {
     }
 
     public float obtenerPorcentageAsistencia(){
-        return (float) asistencias.size() / invitados.size();
+        return (float) asistencias.size() / invitaciones.size();
     }
 
     public float calcularTiempoReal(){

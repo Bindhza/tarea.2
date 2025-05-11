@@ -1,8 +1,9 @@
 package org.example;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Departamento {
+public class Departamento implements Invitable {
     private String nombre;
     private ArrayList<Empleado> lista;
 
@@ -12,5 +13,10 @@ public class Departamento {
 
     public int obtenerCantidadEmpleados(){
         return lista.size();
+    }
+
+    @Override
+    public void invitar() {
+
     }
 }
