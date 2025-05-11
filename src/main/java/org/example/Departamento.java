@@ -1,6 +1,5 @@
 package org.example;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Departamento implements Invitable {
@@ -15,8 +14,9 @@ public class Departamento implements Invitable {
         return lista.size();
     }
 
-    @Override
-    public void invitar() {
 
-    }
+    @Override
+    public void invitar(){
+
+    };
 }

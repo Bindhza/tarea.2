@@ -5,8 +5,8 @@ import java.time.Instant;
 public class Retraso extends Asistencia{
     private Instant hora;
 
-    public Retraso(Empleado empleado, Instant hora) {
-        super(empleado);
+    public Retraso(Invitable asistente, Instant hora) {
+        super(asistente);
         this.hora = hora;
     }
 }
