@@ -8,13 +8,29 @@ import java.util.Date;
 public abstract class Reunion {
 
     private Date fecha;
-    private Instant horaPrevista;
+    private Instant horaPrevista, horaInicio, horaFin;
     private Duration duracionPrevista;
-    private Instant horaInicio, horaFin;
+    private tipoReunion tipoReunion;
 
     private ArrayList<Asistencia> asistencias;
 
     private ArrayList<Invitacion> invitaciones;
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setHoraPrevista(Instant horaPrevista) {
+        this.horaPrevista = horaPrevista;
+    }
+
+    public void setDuracionPrevista(Duration duracionPrevista) {
+        this.duracionPrevista = duracionPrevista;
+    }
+
+    public void setTipoReunion(tipoReunion tipoReunion) {
+        this.tipoReunion = tipoReunion;
+    }
 
     public Duration getDuracionPrevista() {
         return duracionPrevista;
@@ -28,10 +44,15 @@ public abstract class Reunion {
         return fecha;
     }
 
-    public Reunion(Date fecha, Instant horaPrevista, Duration duracionPrevista) {
+    public tipoReunion getTipoReunion() {
+        return tipoReunion;
+    }
+
+    public Reunion(Date fecha, Instant horaPrevista, Duration duracionPrevista, tipoReunion tipoReunion) {
         this.fecha = fecha;
         this.horaPrevista = horaPrevista;
         this.duracionPrevista = duracionPrevista;
+        this.tipoReunion = tipoReunion;
         asistencias = new ArrayList<>();
         invitaciones = new ArrayList<>();
         horaInicio = null;
@@ -39,17 +60,14 @@ public abstract class Reunion {
     }
 
     public ArrayList<Asistencia> obtenerAsistencias(){
-        return asistencias;
+        return new ArrayList<>(asistencias); // cambiado para evitar cambios en el arreglo desde afuera
     }
 
     public void crearInvitacion(Invitable i){
-        /*
-        TODO preguntar a Geoffrey sobre asistencia de un departamento
-        en este método se extienden invitaciones a Invitables específicos
-        */
+        invitaciones.add(new Invitacion(Instant.now(),i));
     }
 
-    public boolean verificarInvitacion(Invitable i){
+    private boolean verificarInvitacion(Invitable i){
         for(Invitacion inv:invitaciones){
             if (inv.getInvitado() == i){
                 return true;
@@ -60,7 +78,7 @@ public abstract class Reunion {
 
     /*
     este se usa cuando alguien llega a la reunion; si no está invitado o ya se acabó todo no pasa nada
-    no estoy seguro de que clase debería tener este método
+    no estoy seguro de que clase debería tener este método, pero esto me conforta más
     */
     public void llegar(Invitable i){
         if (!verificarInvitacion(i) || horaFin != null) {
