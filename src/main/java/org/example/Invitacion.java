@@ -2,6 +2,10 @@ package org.example;
 
 import java.time.Instant;
 
+/**
+ * Representa las invitaciones enviadas por un organizador a una reunion, esta clase
+ * solo la maneja la reunion misma y no los invitados a esta, guarda la hora a la que se envio y el invitado
+ */
 public class Invitacion {
     private Instant hora;
     private Invitable invitado;
@@ -11,6 +15,10 @@ public class Invitacion {
         this.invitado = invitado;
     }
 
+    /**
+     * Retorna el objeto invitado a la reunion en cuestion
+     * @return el invitado asociado a esta reunion
+     */
     public Invitable getInvitado() {
         return invitado;
     }

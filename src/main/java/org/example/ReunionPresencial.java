@@ -4,6 +4,9 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 
+/**
+ * Instancia especifica de Reunion, que se celebra presencialmente
+ */
 public class ReunionPresencial extends Reunion {
 
     private String sala;
@@ -13,10 +16,18 @@ public class ReunionPresencial extends Reunion {
         this.sala = sala;
     }
 
+    /**
+     * Cambia la sala donde se va a celebrar la reunion
+     * @param sala el nombre de la sala de reuniones
+     */
     public void setSala(String sala) {
         this.sala = sala;
     }
 
+    /**
+     * obtiene la sala donde se va a celebrar la reunion
+     * @return el nombre de la sala de reuniones
+     */
     public String getSala() {
         return sala;
     }

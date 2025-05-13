@@ -1,5 +1,9 @@
 package org.example;
 
+/**
+ * Representa un registro de asistencia interno de una reunion
+ */
+
 public class Asistencia {
     private final Invitable asistente;
 

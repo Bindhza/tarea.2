@@ -1,5 +1,9 @@
 package org.example;
 
+/**
+ * Representa a un empleado que pertenece a una empresa
+ */
+
 public class Empleado implements Invitable {
 
     private String id, nombre, apellidos, correo;
@@ -11,6 +15,10 @@ public class Empleado implements Invitable {
         this.id = id;
     }
 
+    /**
+     * Implementacion de la interfaz Invitable
+     * @param r reunion a la cual se es invitado
+     */
     @Override
     public void invitar(Reunion r) {
         r.crearInvitacion(this);

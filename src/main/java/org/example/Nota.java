@@ -1,8 +1,20 @@
 package org.example;
 
+/**
+ * Representa una nota tomada en una reunion
+ */
 public class Nota {
     private String contenido;
 
-    public Nota() {
+    public Nota(String s) {
+        contenido = s;
+    }
+
+    /**
+     * Obtiene el contenido de la nota
+     * @return un string que representa el contenido de la nota
+     */
+    public String getContenido() {
+        return contenido;
     }
 }
