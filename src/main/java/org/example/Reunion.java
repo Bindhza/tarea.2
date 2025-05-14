@@ -231,9 +231,9 @@ public abstract class Reunion {
     /**
      * Finaliza la reunion, registrando la hora de termino
      */
-    public void finalizar(){
+    public void finalizar() throws ReunionSinIniciarException {
         if(horaInicio==null){
-            return;
+            throw new ReunionSinIniciarException();
         }
         horaFin = Instant.now();
     }
@@ -292,18 +292,15 @@ public abstract class Reunion {
 
         String notas = "* ";
         for(Nota n: this.obtenerNotas()){
-            notas += n + "* ";
+            notas += n + " * ";
         }
 
         if(this.horaInicio == null || this.horaFin == null){
             //agregar exepcion de cuando no inicio o termino la reunion
-        }
-        else {
-            return "Tipo de Reunion: " + tipoReunion + "   Fecha: " + fecha + "   Duracion Prevista: " + resultado + "   Duracion Real: " + resultadoDuracion +
-                    "\nHora de Inicio Prevista: " + horaPrevista + "   Hora de inicio: " + horaInicio + "   Hora de termino: " + horaFin +
-                    "\nInvitaciones:\n" + listaInvitaciones + "\nAsistentes:\n" + listaAsistencia + "\nPorcentaje de Asistencia: " + this.obtenerPorcentajeAsistencia()*100 + "%" +
-                    "\nNotas: " + notas;
-        }
-        return "";
+    }
+        return "Tipo de Reunion: " + tipoReunion + "   Fecha: " + fecha + "   Duracion Prevista: " + resultado + "   Duracion Real: " + resultadoDuracion +
+                "\nHora de Inicio Prevista: " + horaPrevista + "   Hora de inicio: " + horaInicio + "   Hora de termino: " + horaFin +
+                "\nInvitaciones:\n" + listaInvitaciones + "\nAsistentes:\n" + listaAsistencia + "\nPorcentaje de Asistencia: " + this.obtenerPorcentajeAsistencia()*100 + "%" +
+                "\nNotas: " + notas;
     }
 }

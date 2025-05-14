@@ -20,6 +20,13 @@ public class Departamento implements Invitable {
         return empleados.size();
     }
 
+    public void agregarEmpleado(Empleado empleado){
+        switch (empleado){
+            case null -> throw new NullPointerException();
+            default -> empleados.add(empleado);
+        }
+    }
+
     /**
      * Implementacion de la interfaz Invitable, se agrega a sí mismo a la lista de invitados
      * e invita a todos los empleados del departamento a la reunion
