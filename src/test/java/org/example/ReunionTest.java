@@ -63,7 +63,7 @@ class ReunionTest {
         r.iniciar();
         r.asistir(empleado3);
         r.finalizar();
-        assertEquals(2, r.obtenerAsistencias().size());
+        assertEquals(2, r.obtenerTotalAsistencia());
         assertEquals(1,r.obtenerRetrasos().size());
         assertEquals(empleado3,r.obtenerRetrasos().getFirst().getAsistente());
     }
@@ -112,7 +112,24 @@ class ReunionTest {
         r.asistir(empleado2);
         r.finalizar();
         assertEquals((float) 2/3,r.obtenerPorcentajeAsistencia());
+        assertEquals(2,r.obtenerTotalAsistencia());
+    }
+    @Test
+    void arrayListsTest() throws NoEstaInvitadoException, ReunionFinalizadaException, ReunionIniciadaException {
+        empleado1.invitar(r);
+        empleado2.invitar(r);
+        empleado3.invitar(r);
+        ArrayList<Asistencia> asistencias = r.obtenerAsistencias();
+        assertEquals(0,asistencias.size());
+        r.iniciar();
+        r.asistir(empleado1);
+        r.asistir(empleado2);
+        r.asistir(empleado3);
+        //entregamos una copia, no el arreglo real
+        //asi nadie puede modificar la asistencia excepto la reunion misma
+        assertEquals(0,asistencias.size());
         assertEquals(3,r.obtenerTotalAsistencia());
+
     }
 
 }

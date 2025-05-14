@@ -5,8 +5,8 @@ package org.example;
  * de todos modos
  */
 public class Externo implements Invitable {
-    private String nombre;
-    private String apellidos;
+    private final String nombre;
+    private final String apellidos;
 
     public Externo(String nombre, String apellidos) {
         this.nombre = nombre;

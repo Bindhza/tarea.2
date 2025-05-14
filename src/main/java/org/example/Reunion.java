@@ -176,8 +176,9 @@ public abstract class Reunion {
      * ya que solo las personas pueden asistir
      *
      * @param i la persona que va a llegar
+     * @return el instante en el cual se llega a la reunion
      */
-    public void asistir(Invitable i) throws NoEstaInvitadoException, ReunionFinalizadaException {
+    public Instant asistir(Invitable i) throws NoEstaInvitadoException, ReunionFinalizadaException {
         if (horaFin != null) {
             throw new ReunionFinalizadaException();
         }
@@ -185,15 +186,17 @@ public abstract class Reunion {
             throw new NoEstaInvitadoException();
         }
 
+        Instant ahora = Instant.now();
         if (i instanceof Departamento) {
-            return;
+            return ahora;
         }
 
         if (horaInicio == null) {
             asistencias.add(new Asistencia(i));
         } else {
-            asistencias.add(new Retraso(i, Instant.now()));
+            asistencias.add(new Retraso(i, ahora));
         }
+        return ahora;
     }
 
     /**
