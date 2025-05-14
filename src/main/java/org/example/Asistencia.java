@@ -14,4 +14,9 @@ public class Asistencia {
     public Asistencia(Invitable asistente) {
         this.asistente = asistente;
     }
+
+    @Override
+    public String toString() {
+        return asistente.toString();
+    }
 }

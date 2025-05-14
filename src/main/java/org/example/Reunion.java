@@ -289,8 +289,12 @@ public abstract class Reunion {
             listaInvitaciones += " " + a + " /";
         }
 
-        return "Tipo de Reunion: " + tipoReunion + "   Fecha: " + fecha + "   Duracion Prevista: " +
+        horas = duracionPrevista.toHours();
+        minutos = duracionPrevista.toMinutesPart();
+        String resultadoDuracion = String.format("%02d:%02d", horas, minutos);
+
+        return "Tipo de Reunion: " + tipoReunion + "   Fecha: " + fecha + "   Duracion Prevista: " + resultado + "   Duracion Real: " +resultadoDuracion+
                 "\nHora Prevista: " + horaPrevista + "   Hora de inicio: " + horaInicial + "   Hora de termino: " + horaFin +
-                "\nInvitaciones:\n" + listaInvitaciones + "\nAsistentes:\n" + listaAsistencia;
+                "\nInvitaciones:\n" + listaInvitaciones + "\nAsistentes:\n" + listaAsistencia + "\nNº de Asistentes" + this.obtenerAsistencias();
     }
 }

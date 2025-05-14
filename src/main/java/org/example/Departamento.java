@@ -33,4 +33,11 @@ public class Departamento implements Invitable {
         }
     }
 
+    public String toString(){
+        String listaEmpleados = "|";
+        for(Empleado e: empleados){
+            listaEmpleados += " " + empleados + " |";
+        }
+        return nombre + "\n" +  listaEmpleados;
+    }
 }
