@@ -32,4 +32,5 @@ public class Departamento implements Invitable {
             empleado.invitar(r);
         }
     }
+
 }

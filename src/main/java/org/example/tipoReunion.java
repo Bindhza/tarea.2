@@ -8,4 +8,19 @@ public enum tipoReunion {
     MARKETING(),
     OTRO();
 
+    public String toString(){
+        switch (this){
+            case TECNICA -> {
+                return "Tecnica";
+            }
+            case MARKETING -> {
+                return "Marketing";
+            }
+            case OTRO -> {
+                return "Otro";
+            }
+            default -> throw new IllegalStateException("tipoReunion invalido: " + this);
+        }
+    }
+
 }

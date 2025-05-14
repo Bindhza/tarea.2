@@ -30,4 +30,9 @@ public class ReunionVirtual extends Reunion{
     public void setEnlace(String enlace) {
         this.enlace = enlace;
     }
+
+    @Override
+    public String toString(){
+        return "Reunion Online (Link: " + enlace + ")\n" + super.toString();
+    }
 }

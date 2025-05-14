@@ -1,6 +1,9 @@
 package org.example;
 
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Representa las invitaciones enviadas por un organizador a una reunion, esta clase
@@ -21,5 +24,14 @@ public class Invitacion {
      */
     public Invitable getInvitado() {
         return invitado;
+    }
+
+    @Override
+    public String toString(){
+
+        ZonedDateTime horaInicial = hora.atZone(ZoneId.systemDefault());
+        DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String hora = formatoHora.format(horaInicial);
+        return invitado + " : " + hora;
     }
 }

@@ -36,4 +36,10 @@ public class Externo implements Invitable {
     public void invitar(Reunion r) {
         r.crearInvitacion(this);
     }
+
+    @Override
+    public String toString(){
+
+        return nombre + " " + apellidos;
+    }
 }

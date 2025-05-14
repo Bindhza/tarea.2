@@ -1,7 +1,11 @@
 package org.example;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -251,5 +255,42 @@ public abstract class Reunion {
                 .stream()
                 .map(p -> p.getContenido())
                 .toList());
+    }
+
+    @Override
+    public String toString(){
+
+        ZonedDateTime horaInicial = horaPrevista.atZone(ZoneId.systemDefault());
+        DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String horaPrevista = formatoHora.format(horaInicial);
+
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        String fecha = formatoFecha.format(this.fecha);
+
+        horaInicial = horaInicio.atZone(ZoneId.systemDefault());
+        String horaInicio = formatoHora.format(horaInicial);
+
+        horaInicial = horaFin.atZone(ZoneId.systemDefault());
+        String horaFin = formatoHora.format(horaInicial);
+
+        String listaAsistencia = "|";
+        for(Asistencia a: asistencias){
+
+            listaAsistencia += " " + a + " |";
+        }
+
+        long horas = duracionPrevista.toHours();
+        long minutos = duracionPrevista.toMinutesPart();
+        String resultado = String.format("%02d:%02d", horas, minutos);
+
+        String listaInvitaciones = "/";
+        for(Invitacion a: invitaciones){
+
+            listaInvitaciones += " " + a + " /";
+        }
+
+        return "Tipo de Reunion: " + tipoReunion + "   Fecha: " + fecha + "   Duracion Prevista: " +
+                "\nHora Prevista: " + horaPrevista + "   Hora de inicio: " + horaInicial + "   Hora de termino: " + horaFin +
+                "\nInvitaciones:\n" + listaInvitaciones + "\nAsistentes:\n" + listaAsistencia;
     }
 }

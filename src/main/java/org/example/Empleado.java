@@ -23,4 +23,10 @@ public class Empleado implements Invitable {
     public void invitar(Reunion r) {
         r.crearInvitacion(this);
     }
+
+    @Override
+    public String toString(){
+
+        return id + "-" + nombre + " " + apellidos+ "-" + correo;
+    }
 }

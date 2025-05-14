@@ -17,4 +17,8 @@ public class Nota {
     public String getContenido() {
         return contenido;
     }
+
+    public String toString(){
+        return contenido;
+    }
 }
