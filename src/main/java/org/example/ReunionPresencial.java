@@ -34,6 +34,6 @@ public class ReunionPresencial extends Reunion {
 
     @Override
     public String toString(){
-        return "Reunion Precencial "+"\nSala: " + sala + "   " + super.toString();
+        return "Reunion Precencial "+"(Sala: " + sala + ")\n" + super.toString();
     }
 }

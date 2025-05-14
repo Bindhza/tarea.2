@@ -250,11 +250,8 @@ public abstract class Reunion {
      * devuelve todas las notas tomadas en la reunion
      * @return ArrayList con el contenido de todas las notas de la reunion
      */
-    public ArrayList<String> obtenerNotas(){
-        return new ArrayList<>(notas
-                .stream()
-                .map(p -> p.getContenido())
-                .toList());
+    public ArrayList<Nota> obtenerNotas(){
+        return new ArrayList<>(notas);
     }
 
     @Override
@@ -289,12 +286,24 @@ public abstract class Reunion {
             listaInvitaciones += " " + a + " /";
         }
 
-        horas = duracionPrevista.toHours();
-        minutos = duracionPrevista.toMinutesPart();
+        horas = this.calcularTiempoReal().toHours();
+        minutos = this.calcularTiempoReal().toMinutesPart();
         String resultadoDuracion = String.format("%02d:%02d", horas, minutos);
 
-        return "Tipo de Reunion: " + tipoReunion + "   Fecha: " + fecha + "   Duracion Prevista: " + resultado + "   Duracion Real: " +resultadoDuracion+
-                "\nHora Prevista: " + horaPrevista + "   Hora de inicio: " + horaInicial + "   Hora de termino: " + horaFin +
-                "\nInvitaciones:\n" + listaInvitaciones + "\nAsistentes:\n" + listaAsistencia + "\nNº de Asistentes" + this.obtenerAsistencias();
+        String notas = "* ";
+        for(Nota n: this.obtenerNotas()){
+            notas += n + "* ";
+        }
+
+        if(this.horaInicio == null || this.horaFin == null){
+            //agregar exepcion de cuando no inicio o termino la reunion
+        }
+        else {
+            return "Tipo de Reunion: " + tipoReunion + "   Fecha: " + fecha + "   Duracion Prevista: " + resultado + "   Duracion Real: " + resultadoDuracion +
+                    "\nHora de Inicio Prevista: " + horaPrevista + "   Hora de inicio: " + horaInicio + "   Hora de termino: " + horaFin +
+                    "\nInvitaciones:\n" + listaInvitaciones + "\nAsistentes:\n" + listaAsistencia + "\nPorcentaje de Asistencia: " + this.obtenerPorcentajeAsistencia()*100 + "%" +
+                    "\nNotas: " + notas;
+        }
+        return "";
     }
 }
