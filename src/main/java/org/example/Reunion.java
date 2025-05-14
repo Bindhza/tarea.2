@@ -258,6 +258,11 @@ public abstract class Reunion {
         return new ArrayList<>(notas);
     }
 
+    /**
+     * Genera un informe sobre la reunion
+     * el informe se almacenara en informe.txt
+     * @throws IOException
+     */
     public void generarInforme() throws IOException {
         File archivo = new File("informe.txt");
         FileWriter writer = new FileWriter(archivo);
@@ -270,6 +275,7 @@ public abstract class Reunion {
     @Override
     public String toString(){
 
+        //Transforma la la hora
         ZonedDateTime horaInicial = horaPrevista.atZone(ZoneId.systemDefault());
         DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm:ss");
         String horaPrevista = formatoHora.format(horaInicial);
@@ -283,12 +289,14 @@ public abstract class Reunion {
         horaInicial = horaFin.atZone(ZoneId.systemDefault());
         String horaFin = formatoHora.format(horaInicial);
 
+        //genera el string con las asistencia
         String listaAsistencia = "|";
         for(Asistencia a: asistencias){
 
             listaAsistencia += " " + a + " |";
         }
 
+        //pasa el duracion prevista de un Instant a string
         long horas = duracionPrevista.toHours();
         long minutos = duracionPrevista.toMinutesPart();
         String resultado = String.format("%02d:%02d", horas, minutos);

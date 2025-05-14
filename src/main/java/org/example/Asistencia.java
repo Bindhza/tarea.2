@@ -7,6 +7,10 @@ package org.example;
 public class Asistencia {
     private final Invitable asistente;
 
+    /**
+     * retorna el asistente
+     * @return asistente
+     */
     public Invitable getAsistente() {
         return asistente;
     }

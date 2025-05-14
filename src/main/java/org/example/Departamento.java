@@ -2,8 +2,8 @@ package org.example;
 
 import java.util.ArrayList;
 
-/*
- Representa el departamento de una empresa, conformado por empleados
+/**
+ * Representa el departamento de una empresa, conformado por empleados
  */
 public class Departamento implements Invitable {
     private String nombre;
@@ -20,6 +20,11 @@ public class Departamento implements Invitable {
         return empleados.size();
     }
 
+
+    /**
+     * Metodo para agregar empleado
+     * @param empleado
+     */
     public void agregarEmpleado(Empleado empleado){
         switch (empleado){
             case null -> throw new NullPointerException();

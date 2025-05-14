@@ -5,6 +5,12 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
 
+/**
+ * Reuniones
+ * @author Maximo Beltran
+ * @author Benjamin Poblete
+ */
+
 public class Main {
     public static void main(String[] args) throws ReunionSinIniciarException, IOException {
 
