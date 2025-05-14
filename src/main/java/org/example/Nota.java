@@ -4,7 +4,7 @@ package org.example;
  * Representa una nota tomada en una reunion
  */
 public class Nota {
-    private String contenido;
+    private final String contenido;
 
     public Nota(String s) {
         contenido = s;
@@ -12,13 +12,14 @@ public class Nota {
 
     /**
      * Obtiene el contenido de la nota
+     *
      * @return un string que representa el contenido de la nota
      */
     public String getContenido() {
         return contenido;
     }
 
-    public String toString(){
+    public String toString() {
         return contenido;
     }
 }

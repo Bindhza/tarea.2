@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Instancia de Reunion, que se celebra en linea
  */
-public class ReunionVirtual extends Reunion{
+public class ReunionVirtual extends Reunion {
     private String enlace;
 
     public ReunionVirtual(Date fecha, Instant horaPrevista, Duration duracionPrevista, String enlace, tipoReunion tipo) {
@@ -16,7 +16,8 @@ public class ReunionVirtual extends Reunion{
     }
 
     /**
-     * obtiene el enlace de la reunion virtual
+     * Obtiene el enlace de la reunion virtual
+     *
      * @return el enlace de la reunion
      */
     public String getEnlace() {
@@ -24,7 +25,8 @@ public class ReunionVirtual extends Reunion{
     }
 
     /**
-     * cambia el enlace de la reunion
+     * Cambia el enlace de la reunion
+     *
      * @param enlace el nuevo enlace de la reunion
      */
     public void setEnlace(String enlace) {
@@ -32,7 +34,7 @@ public class ReunionVirtual extends Reunion{
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Reunion Online (Link: " + enlace + ")\n" + super.toString();
     }
 }

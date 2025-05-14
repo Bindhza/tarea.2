@@ -8,37 +8,34 @@ public class Externo implements Invitable {
     private String nombre;
     private String apellidos;
 
-    public String getNombre() {
-        return nombre;
+    public Externo(String nombre, String apellidos) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getNombre() {
+        return nombre;
     }
 
     public String getApellidos() {
         return apellidos;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public Externo(String nombre, String apellidos) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-    }
-
     /**
-     * Implementacion de la interfaz Invitable, se agrega a si mismo a la lista de invitados
+     * Implementacion de la interfaz Invitable, se agrega a sí mismo a la lista de invitados
+     *
      * @param r reunion a la que se es invitado
      */
+    @Override
     public void invitar(Reunion r) {
+        if (r == null) {
+            throw new NullPointerException("REUNION NO EXISTE");
+        }
         r.crearInvitacion(this);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
 
         return nombre + " " + apellidos;
     }

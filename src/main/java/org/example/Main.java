@@ -7,18 +7,19 @@ import java.util.Date;
 
 /**
  * Reuniones
- * @author Maximo Beltran
- * @author Benjamin Poblete
+ *
+ * @author Máximo Ignacio Beltrán Aranzáez
+ * @author Benjamín Poblete
  */
-
+// poner nombre completo
 public class Main {
-    public static void main(String[] args) throws ReunionSinIniciarException, IOException {
+    public static void main(String[] args) throws ReunionSinIniciarException, IOException, NoEstaInvitadoException, ReunionFinalizadaException, ReunionIniciadaException, ReunionSinFinalizarException {
 
         Date fechaActual = Date.from(Instant.now());
-        ReunionVirtual reunion = new ReunionVirtual(fechaActual, Instant.now(), Duration.ofHours(2),"prueba.com", tipoReunion.MARKETING);
+        ReunionVirtual reunion = new ReunionVirtual(fechaActual, Instant.now(), Duration.ofHours(2), "prueba.com", tipoReunion.MARKETING);
         Empleado empleado = new Empleado("prueba@gmail.com", "Perez", "Juanito", "666");
         empleado.invitar(reunion);
-        reunion.llegar(empleado);
+        reunion.asistir(empleado);
         reunion.iniciar();
         reunion.agregarNota("Hola");
 
@@ -38,10 +39,6 @@ public class Main {
         System.out.println(reunion.obtenerAsistencias());
         System.out.println(reunion.obtenerAusencias());
 
-        try {
-            reunion.generarInforme();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 }

@@ -14,12 +14,16 @@ public class Invitacion {
     private Invitable invitado;
 
     public Invitacion(Instant hora, Invitable invitado) {
+        if (invitado == null || hora == null) {
+            throw new IllegalArgumentException("ARGUMENTO/S NULOS");
+        }
         this.hora = hora;
         this.invitado = invitado;
     }
 
     /**
      * Retorna el objeto invitado a la reunion en cuestion
+     *
      * @return el invitado asociado a esta reunion
      */
     public Invitable getInvitado() {
@@ -27,8 +31,7 @@ public class Invitacion {
     }
 
     @Override
-    public String toString(){
-
+    public String toString() {
         ZonedDateTime horaInicial = hora.atZone(ZoneId.systemDefault());
         DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm:ss");
         String hora = formatoHora.format(horaInicial);

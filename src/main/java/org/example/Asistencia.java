@@ -7,16 +7,20 @@ package org.example;
 public class Asistencia {
     private final Invitable asistente;
 
+    public Asistencia(Invitable asistente) {
+        if (asistente == null) {
+            throw new NullPointerException("ASISTENTE NO EXISTE");
+        }
+        this.asistente = asistente;
+    }
+
     /**
-     * retorna el asistente
-     * @return asistente
+     * Retorna el asistente
+     *
+     * @return el asistente a la reunion
      */
     public Invitable getAsistente() {
         return asistente;
-    }
-
-    public Asistencia(Invitable asistente) {
-        this.asistente = asistente;
     }
 
     @Override

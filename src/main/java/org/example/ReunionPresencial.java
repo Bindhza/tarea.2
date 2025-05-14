@@ -17,23 +17,25 @@ public class ReunionPresencial extends Reunion {
     }
 
     /**
-     * Cambia la sala donde se va a celebrar la reunion
-     * @param sala el nombre de la sala de reuniones
-     */
-    public void setSala(String sala) {
-        this.sala = sala;
-    }
-
-    /**
      * obtiene la sala donde se va a celebrar la reunion
+     *
      * @return el nombre de la sala de reuniones
      */
     public String getSala() {
         return sala;
     }
 
+    /**
+     * Cambia la sala donde se va a celebrar la reunion
+     *
+     * @param sala el nombre de la sala de reuniones
+     */
+    public void setSala(String sala) {
+        this.sala = sala;
+    }
+
     @Override
-    public String toString(){
-        return "Reunion Precencial "+"(Sala: " + sala + ")\n" + super.toString();
+    public String toString() {
+        return "Reunion Precencial " + "(Sala: " + sala + ")\n" + super.toString();
     }
 }

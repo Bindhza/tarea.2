@@ -6,7 +6,10 @@ package org.example;
 
 public class Empleado implements Invitable {
 
-    private String id, nombre, apellidos, correo;
+    private final String id;
+    private final String nombre;
+    private final String apellidos;
+    private final String correo;
 
     public Empleado(String correo, String apellidos, String nombre, String id) {
         this.correo = correo;
@@ -17,6 +20,7 @@ public class Empleado implements Invitable {
 
     /**
      * Implementacion de la interfaz Invitable
+     *
      * @param r reunion a la cual se es invitado
      */
     @Override
@@ -25,8 +29,8 @@ public class Empleado implements Invitable {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
 
-        return id + "-" + nombre + " " + apellidos+ "-" + correo;
+        return id + "-" + nombre + " " + apellidos + "-" + correo;
     }
 }
