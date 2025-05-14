@@ -1,5 +1,9 @@
 package org.example;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
@@ -252,6 +256,15 @@ public abstract class Reunion {
      */
     public ArrayList<Nota> obtenerNotas(){
         return new ArrayList<>(notas);
+    }
+
+    public void generarInforme() throws IOException {
+        File archivo = new File("informe.txt");
+        FileWriter writer = new FileWriter(archivo);
+        PrintWriter print = new PrintWriter(writer);
+        print.println(this.toString());
+        print.close();
+
     }
 
     @Override
