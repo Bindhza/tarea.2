@@ -396,7 +396,7 @@ public abstract class Reunion {
                 "   Hora de termino: " + strHoraFin +
                 "\nInvitaciones:\n" + strListaInvitaciones +
                 "\nAsistentes:\n" + strListaAsistencia +
-                "\nPorcentaje de Asistencia: " + this.obtenerPorcentajeAsistencia() * 100 + "%" +
+                "\nCantidad de Asistentes: "+ this.obtenerTotalAsistencia()+"   Porcentaje de Asistencia: " + this.obtenerPorcentajeAsistencia() * 100 + "%" +
                 "\nNotas: " + strNotas;
     }
 }
